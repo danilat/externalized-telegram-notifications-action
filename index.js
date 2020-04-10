@@ -22,7 +22,7 @@ async function getMessage(){
   let message = await response.readBody()
   console.log("Message to send to telegram:", message)
   console.log("Sending message to send:", to)
-  const telegramEndopoint = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${to}&text="${message}"`
+  const telegramEndopoint = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${to}&text=${message}`
   const telegramResponse = await httpClient.get(telegramEndopoint)
   const telegramMessage = await telegramResponse.readBody()
   if (telegramResponse.message.statusCode != 200) {
