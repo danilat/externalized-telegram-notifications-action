@@ -19,11 +19,11 @@ async function getMessage(){
   const token = core.getInput("token");
   const to = core.getInput("to");
   let response = await httpClient.get(contentUrl)
-  let message = await response.readBody()
+  let message = encodeURI(await response.readBody())
   console.log("Message to send to telegram:", message)
   console.log("Sending message to send:", to)
-  const telegramEndopoint = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${to}&text=${message}`
-  const telegramResponse = await httpClient.get(telegramEndopoint)
+  const telegramEndopoint = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${to}&text=${message}&parse_mode=html`
+  const telegramResponse = await httpClient.post(telegramEndopoint)
   const telegramMessage = await telegramResponse.readBody()
   if (telegramResponse.message.statusCode != 200) {
     core.setFailed("Telegram FAILED", telegramMessage);
