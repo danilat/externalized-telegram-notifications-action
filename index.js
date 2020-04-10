@@ -25,6 +25,11 @@ async function getMessage(){
   const telegramEndopoint = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${to}&text="${message}"`
   const telegramResponse = await httpClient.get(telegramEndopoint)
   const telegramMessage = await telegramResponse.readBody()
+  if (telegramResponse.message.statusCode != 200) {
+    core.setFailed("Telegram FAILED", telegramMessage);
+  } else {
+    core.setOutput("Telegrams SUCCESS", telegramMessage);
+  }
   console.log("Telegrams response:", telegramMessage)
 
 }
