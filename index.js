@@ -1,15 +1,29 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const http = require('@actions/http-client');
+const httpClient = new http.HttpClient();
 
 try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
+  getMessage()
 } catch (error) {
   core.setFailed(error.message);
+}
+
+async function getMessage(){
+  const contentUrl = core.getInput("content-url");
+  const token = core.getInput("token");
+  const to = core.getInput("to");
+  let response = await httpClient.get(contentUrl)
+  let message = await response.readBody()
+  console.log("Message to send to telegram:", message)
+  const telegramEndopoint = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${to}&text="${message}"`
+  const telegramResponse = await httpClient.get(telegramEndopoint)
+  const telegramMessage = await telegramResponse.readBody()
+  console.log("Telegrams response:", telegramMessage)
+
 }
