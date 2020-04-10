@@ -1,5 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'External Telegram Notificatios'
+description: 'Configure an endpoint to get the content to send to a telegram chat'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
