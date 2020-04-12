@@ -1,4 +1,4 @@
-# Externalized Telegram Notifications-action action
+# Externalized Telegram Notifications Action
 
 [GitHub Action](https://github.com/features/actions) that send messages to Telegram, previously retrieves the message content from an external url. Html (default mode) or markdown formats are both supporte in the retrieved content for the message.
 
