@@ -7,12 +7,12 @@ inputs:
   to:
     description: 'Id of the telegram chat or channel'
     required: true
+  parse-mode:
+    description: 'Telegram parse mode for the messages'
+    default: 'html'
   content-url:
     description: 'Url with the content to send to telegram'
     required: true
-outputs:
-  time: # id of output
-    description: 'The time we we greeted you'
 runs:
   using: 'node12'
   main: 'index.js'
