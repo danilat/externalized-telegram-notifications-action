@@ -1,4 +1,4 @@
-name: 'External Telegram Notificatios'
+name: 'External Telegram Notifications'
 description: 'Configure an endpoint to get the content to send to a telegram chat'
 inputs:
   token:

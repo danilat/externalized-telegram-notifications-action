@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Send notifications
-      id: send_notificsations
+      id: send_notifications
       uses: danilat/externalized-telegram-notifications-action@master
       with:
         to: ${{ secrets.TELEGRAM_ID_OR_CHANNEL }}
