@@ -1,5 +1,5 @@
-const core = require('@actions/core');
-const http = require('@actions/http-client');
+const core = require("@actions/core");
+const http = require("@actions/http-client");
 const httpClient = new http.HttpClient();
 
 async function sendMessage(){

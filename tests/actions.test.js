@@ -1,9 +1,10 @@
 
-const core = require('@actions/core');
-const sendMessage = require('../sendMessage');
-require('dotenv').config()
+const core = require("@actions/core");
+const sendMessage = require("../sendMessage");
+require("dotenv").config()
 
-test('run the action', async () => {
+
+test("run the action", async () => {
   core.getInput = (argName) => {
     switch (argName) {
       case "to":

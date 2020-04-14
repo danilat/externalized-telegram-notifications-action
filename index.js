@@ -1,2 +1,2 @@
-const sendMessage = require('./sendMessage');
+const sendMessage = require("./sendMessage");
 sendMessage();
